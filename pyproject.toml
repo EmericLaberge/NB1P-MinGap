@@ -1,0 +1,26 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.uv.workspace]
+members = ["packages/*"]
+
+[tool.uv.sources]
+nb1p = { workspace = true }
+mingap = { workspace = true }
+sglpp = { workspace = true }
+syntesim_bridge = { workspace = true }
+syntesim = { path = "../../redaction/syntesim-mirror", editable = true }
+
+[tool.pyright]
+include = ["packages", "tests", "scripts"]
+pythonVersion = "3.11"
+typeCheckingMode = "standard"
+reportMissingImports = "warning"
+reportMissingTypeStubs = "none"
+
+[tool.pytest.ini_options]
+testpaths = ["tests", "packages/sglpp/tests"]
+
+[dependency-groups]
+dev = ["pytest>=8.0"]

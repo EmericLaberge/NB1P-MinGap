@@ -1,0 +1,22 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "nb1p"
+version = "0.1.0"
+description = "NB1P (Non-Breaking Ones Property) decision solver for ternary matrices."
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Emeric" }]
+
+[project.optional-dependencies]
+sat = ["python-sat>=1.8"]
+ilp = ["gurobipy>=11"]
+all = ["nb1p[sat,ilp]"]
+
+[project.scripts]
+nb1p = "nb1p.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/nb1p"]

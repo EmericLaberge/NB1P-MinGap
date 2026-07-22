@@ -1,0 +1,20 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "sglpp"
+version = "0.1.0"
+description = "Phylogenetic trees, Dollo scenarios, SGLPP parsimony, rendering."
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Emeric" }]
+dependencies = ["nb1p"]
+
+[project.optional-dependencies]
+viz = ["matplotlib>=3.7", "numpy>=1.24"]
+data = ["duckdb>=1.0"]
+all = ["sglpp[viz,data]"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/sglpp"]
